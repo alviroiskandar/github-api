@@ -166,6 +166,9 @@ function do_action(int &$http_code, string $username, string $action): array
 	if ($action === "")
 		goto out;
 
+	/*
+	 * TODO: Support more actions...
+	 */
 	switch ($action) {
 	case "_":
 	case "repos":
@@ -174,7 +177,6 @@ function do_action(int &$http_code, string $username, string $action): array
 		$http_code = 400;
 		return api_error("Invalid action \"%s\"", $action);
 	}
-
 
 out:
 	$res = open_from_cache($username, $action);
