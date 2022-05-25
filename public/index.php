@@ -79,8 +79,8 @@ function save_cache(string $username, string $action, array $data): void
 function fetch_from_github(int &$http_code, string $username, string $action): array
 {
 	$ua = sprintf("GitHub API bridge v%s", APP_VERSION);
-	$endpoint = sprintf("https://api.github.com/users/%s", $username,
-			    ($action === "_") ? "" : $action);
+	$endpoint = sprintf("https://api.github.com/users/%s%s", $username,
+			    ($action === "_") ? "" : "/{$action}");
 
 	$ch = curl_init($endpoint);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
