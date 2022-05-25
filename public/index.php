@@ -191,10 +191,11 @@ out:
  */
 function main(): int
 {
-	$http_code = 400;
+	$http_code = 200;
 	$res = [];
 
 	if (!isset($_GET["username"])) {
+		$http_code = 400;
 		$res = api_error("Missing \"username\" query string");
 		goto out;
 	}
