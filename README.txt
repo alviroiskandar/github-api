@@ -13,9 +13,9 @@ and very inconvenience.
 
 ## Solution:
 Create a GitHub API bridge that caches the API response into a file.
-This can greatly reduce the number of HTTP requests since we're loading
-the data from cache file instead of performing an HTTP request to
-GitHub for every request.
+This can greatly reduce the number of HTTP requests to GitHub since we
+are loading the data from the cache file instead of performing an HTTP
+request to GitHub for every request.
 
 ## Storage Implementation Details:
 1. Each request that gets a "200 OK" response is cached for 5 hours
