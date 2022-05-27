@@ -199,12 +199,24 @@ function main(): int
 		$res = api_error("Missing \"username\" query string");
 		goto out;
 	}
+
+	if (!is_string($_GET["username"])) {
+		$http_code = 400;
+		$res = api_error("The \"username\" must be a string");
+		goto out;
+	}
 	$username = $_GET["username"];
 
-	if (!isset($_GET["action"]))
+	if (!isset($_GET["action"])) {
 		$action = "_";
-	else
+	} else {
+		if (!is_string($_GET["action"])) {
+			$http_code = 400;
+			$res = api_error("The \"action\" must be a string");
+			goto out;
+		}
 		$action = $_GET["action"];
+	}
 
 	$res = do_action($http_code, $username, $action);
 out:
