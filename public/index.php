@@ -119,7 +119,7 @@ function open_from_cache(string $username, string $action): ?array
 	if (!file_exists($cache_file))
 		return NULL;
 
-	$cache = @file_get_contents($cache_file);
+	$cache = @file_get_contents($cache_file, LOCK_EX);
 	if (!$cache)
 		return NULL;
 
