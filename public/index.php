@@ -144,13 +144,8 @@ function open_from_cache(string $username, string $action): ?array
 	if (!is_int($cache["expired_at"]) || !is_array($cache["data"]))
 		return NULL;
 
-	if (time() >= $cache["expired_at"]) {
-		/*
-		 * The cache file has been expired, delete it!
-		 */
-		@unlink($cache_file);
+	if (time() >= $cache["expired_at"])
 		return NULL;
-	}
 
 	return $cache["data"];
 }
